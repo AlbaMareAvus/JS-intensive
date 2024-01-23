@@ -1,31 +1,60 @@
-# Task 4 - let, const and ReferenceError
+# Task 4 - JS примитивы
 
-При обращении к переменным, созданным через `let` и `const`, до их объявления мы получаем ошибку ReferenceError, потому что у `let` и `const` есть так называемая temporal dead zone (TDZ) - момент выполнения скрипта до объявления переменной.
+1. String
 
 ```js
-  // bestFood’s TDZ starts here (at the beginning of this block’s local scope)
-  // bestFood’s TDZ continues here
-  // bestFood’s TDZ continues here
-  // bestFood’s TDZ continues here
-  console.log(bestFood); // returns ReferenceError because bestFood’s TDZ continues here
-  // bestFood’s TDZ continues here
-  // bestFood’s TDZ continues here
-  let bestFood = "Vegetable Fried Rice"; // bestFood’s TDZ ends here
-  // bestFood’s TDZ does not exist here
-  // bestFood’s TDZ does not exist here
-  // bestFood’s TDZ does not exist here
+  const firstStr = 'first string';
+  const secondStr = "second string";
+  const firstAndSecondStr = `${firstStr} and ${secondStr}`;
+
+  const thirdStr = String('third string');
+  const fourthStr = new String('fourth string');
 ```
 
----
-
-#### А что с var?
-У переменных, объявленных при помощи `var`, TDZ заканчивается сразу после ее всплытия (hoisting).
+2. Number
 
 ```js
-  // bestFood’s TDZ starts and ends here
-  console.log(bestFood); // returns undefined because bestFood’s TDZ does not exist here
-  var bestFood = "Vegetable Fried Rice"; // bestFood’s TDZ does not exist here
-  console.log(bestFood); // returns "Vegetable Fried Rice" because bestFood’s TDZ does not exist here
-  // bestFood’s TDZ does not exist here
-  // bestFood’s TDZ does not exist here
+  const firstNumber = 12;
+  
+  const secondNumber = Number(12);
+```
+
+3. Boolean
+
+```js
+  const firstBoolean = true;
+  
+  const secondBoolean = Boolean(false);
+```
+
+4. Null
+
+```js
+  const firstNull = null;
+  
+  let secondNull = null;
+```
+
+5. Undefined
+
+```js
+  const firstUndefined = undefined;
+  
+  const secondUndefined;
+```
+
+6. Symbol
+
+```js
+  const firstSymbol = Symbol('id');
+  
+  const secondSymbol = Symbol();
+```
+
+7. BigInt
+
+```js
+  const firstBigInt = 12n;
+  
+  const secondBigInt = BigInt(12);
 ```
