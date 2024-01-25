@@ -18,6 +18,8 @@ const deepEqual = (obj1, obj2) => {
   if (typeof obj1 !== 'object' || typeof obj2 !== 'object') return 'Переданы не объекты';
   if (obj1 === null || obj2 === null) return 'Переданы значения null';
 
+  if (obj1 instanceof Array && obj2 instanceof Array && obj1.length !== obj2.length) return false;
+
   for (let key in obj1) {
     if (!obj2.hasOwnProperty(key)) return false;
 
