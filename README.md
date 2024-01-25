@@ -1,15 +1,15 @@
-# First HomeWork
+# Second HomeWork
 
 Tasks:
 
-1. [Метод запроса OPTIONS](./1-task.md)
+1. [Создание объекта counter всеми способами](./1-task.md)
 
-2. [HTTP/3](./2-task.md)
+2. [Копирование объекта counter всеми возможными способами](./2-task.md)
 
-3. [Способы отмены запроса](./3-task.md)
+3. [Создание функции makeCounter всеми способами](./3-task.md)
 
-4. [JS примитивы](./4-task.md)
+Bonus tasks:
 
-5. [let, const and ReferenceError](./5-task.md)
+1. [Функция глубокого сравнения объектов](./bonus.1-task.js)
 
-6. [JS task](./6-task.md)
+2. [Функция, переворачивающая строку при помощи методов массивов](./bonus.2-task.js)
