@@ -20,10 +20,14 @@ const deepEqual = (obj1, obj2) => {
     if (!obj2.hasOwnProperty(key)) return false;
 
     if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
+      if (
+        ((obj1[key] instanceof Array || obj1[key] instanceof Object) && obj2[key] === null) ||
+        ((obj2[key] instanceof Array || obj2[key] instanceof Object) && obj1[key] === null)
+      ) return false;
+
       const result = deepEqual(obj1[key], obj2[key]);
       
       if (result === false) return false;
-      //TODO typeof null
     } else {
       if (obj1[key] !== obj2[key]) return false;
     }
@@ -33,13 +37,21 @@ const deepEqual = (obj1, obj2) => {
 };
 
 const obj1 = {
-  here: { is: 'on', other: '3', arr: {} },
+  here: { is: 'on', other: '3' },
   object: 'Y'
 };
 
 const obj2 = {
-  here: { is: 'on', other: '3', arr: null },
+  here: { is: 'on', other: '3' },
   object: 'Y'
 };
+
+const obj3 = {
+  a: null
+}
+
+const obj4 = {
+  a: []
+}
 
 console.log(deepEqual(obj1, obj2));
