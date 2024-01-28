@@ -4,7 +4,7 @@
  * @returns {String} перевернутая строка
  */
 function reverseStr(str) {
-  return str.trim().split('').reverse().join('');
+  return Array.from(str).reverse().join('');
 }
 
 const originalString = 'Some random text';
