@@ -1,13 +1,3 @@
-const obj1 = {
-  here: { is: 'on', other: '3' },
-  object: 'Y'
-};
-
-const obj2 = {
-  here: { is: 'on', other: '2' },
-  object: 'Y'
-};
-
 /**
  * Функция глубокого сравнения двух объектов
  * @param {Object} obj1 первый объект
@@ -15,24 +5,41 @@ const obj2 = {
  * @returns {Boolean|String} Результат сравнения (true/false) или сообщение об ошибки
  */
 const deepEqual = (obj1, obj2) => {
-  if (typeof obj1 !== 'object' || typeof obj2 !== 'object') return 'Переданы не объекты';
-  if (obj1 === null || obj2 === null) return 'Переданы значения null';
+  if (typeof obj1 !== 'object' || typeof obj2 !== 'object') return 'Error: value(s) is(are) not object(s)';
+  if (obj1 === null || obj2 === null) return 'Error: value(s) is(are) null';
 
-  if (obj1 instanceof Array && obj2 instanceof Array && obj1.length !== obj2.length) return false;
+  if (Object.keys(obj1).length !== Object.keys(obj2).length) return false;
+  if (
+    obj1 instanceof Array && !(obj2 instanceof Array) ||
+    !(obj1 instanceof Array) && obj2 instanceof Array
+  ) {
+    return false;
+  }
 
   for (let key in obj1) {
     if (!obj2.hasOwnProperty(key)) return false;
 
     if (typeof obj1[key] === 'object' && typeof obj2[key] === 'object') {
-      const res = deepEqual(obj1[key], obj2[key]);
-
-      if (res === false) return false;
+      const result = deepEqual(obj1[key], obj2[key]);
+      
+      if (result === false) return false;
+      //TODO typeof null
     } else {
       if (obj1[key] !== obj2[key]) return false;
     }
   }
 
   return true;
+};
+
+const obj1 = {
+  here: { is: 'on', other: '3', arr: {} },
+  object: 'Y'
+};
+
+const obj2 = {
+  here: { is: 'on', other: '3', arr: null },
+  object: 'Y'
 };
 
 console.log(deepEqual(obj1, obj2));
