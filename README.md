@@ -1,11 +1,11 @@
-# Third HomeWork
+# Fourth HomeWork
 
 Tasks:
 
-1. ["Неправильные" массивы](./1-task.md)
+1. [](./1-task.md)
 
-2. [Задание по привязке контекста](./2-task.js)
+2. [](./2-task.md)
 
 Bonus tasks:
 
-1. [Полифил метода bind()](./bonus.1-task.js)
+1. [Бонус задание - функция firstSum + оценка сложности](./bonus.1-task.js)
